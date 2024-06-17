@@ -71,8 +71,8 @@ def sharpe(phi):
 
 max_sharpe = minimize(lambda phi: -sharpe(phi), (0.5, 0.5), constraints=cons, bounds=bnds)
 
-print(min_var)
-print(max_sharpe)
+# print(min_var)
+# print(max_sharpe)
 
 # plt.figure(figsize=(10, 6))
 # plt.plot(mcs[:, 0], mcs[:, 1], 'ro', ms=5)
@@ -99,11 +99,11 @@ for target in targets:
 
 frontier = np.array(frontier)
 
-plt.figure(figsize=(10, 6))
-plt.plot(frontier[:, 0], frontier[:, 1], 'mo', ms=5, label='efficient frontier')
-plt.plot(sigma_phi(min_var['x']), mu_phi(min_var['x']), '^', ms=12.5, label='minimum volatility')
-plt.plot(sigma_phi(max_sharpe['x']), mu_phi(max_sharpe['x']), 'v', ms=12.5, label='maximum Sharpe ratio')
-plt.xlabel('expected volalitity')
-plt.ylabel('expected return')
-plt.legend()
-plt.show()
+# plt.figure(figsize=(10, 6))
+# plt.plot(frontier[:, 0], frontier[:, 1], 'mo', ms=5, label='efficient frontier')
+# plt.plot(sigma_phi(min_var['x']), mu_phi(min_var['x']), '^', ms=12.5, label='minimum volatility')
+# plt.plot(sigma_phi(max_sharpe['x']), mu_phi(max_sharpe['x']), 'v', ms=12.5, label='maximum Sharpe ratio')
+# plt.xlabel('expected volalitity')
+# plt.ylabel('expected return')
+# plt.legend()
+# plt.show()
