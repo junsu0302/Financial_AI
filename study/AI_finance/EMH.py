@@ -46,23 +46,24 @@ for sym in data.columns:
 rega = np.stack(tuple(regs.values()))
 regd = pd.DataFrame(rega, columns=cols, index=data.columns)
 
-# 그래프 생성
-fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+def plot():
+  # 그래프 생성
+  fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
-# 데이터 정규화 및 시각화
-normalized_data = data / data.iloc[0]
-normalized_data.plot(ax=axes[0])
-axes[0].set_title('Normalized Data')
-axes[0].set_xlabel('Date')
-axes[0].set_ylabel('Normalized Value')
-axes[0].legend(loc='best')
+  # 데이터 정규화 및 시각화
+  normalized_data = data / data.iloc[0]
+  normalized_data.plot(ax=axes[0])
+  axes[0].set_title('Normalized Data')
+  axes[0].set_xlabel('Date')
+  axes[0].set_ylabel('Normalized Value')
+  axes[0].legend(loc='best')
 
-# 회귀 계수 평균 시각화
-regd.mean().plot(kind='bar', ax=axes[1])
-axes[1].set_title('Mean Regression Coefficients')
-axes[1].set_xlabel('Lags')
-axes[1].set_ylabel('Coefficient Value')
+  # 회귀 계수 평균 시각화
+  regd.mean().plot(kind='bar', ax=axes[1])
+  axes[1].set_title('Mean Regression Coefficients')
+  axes[1].set_xlabel('Lags')
+  axes[1].set_ylabel('Coefficient Value')
 
-plt.tight_layout()
-plt.savefig('assets/AI_finance/EMH.png')
-plt.show()
+  plt.tight_layout()
+  plt.savefig('assets/AI_finance/EMH.png')
+  plt.show()
