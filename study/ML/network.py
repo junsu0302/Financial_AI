@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
-from keras.layers import Dense
-from keras.models import Sequential
-from keras.callbacks import EarlyStopping
+from keras.layers import Dense # type: ignore
+from keras.models import Sequential # type: ignore
+from keras.callbacks import EarlyStopping # type: ignore
 
 from data import f_test, f_train, l_test, l_train, features, labels
 
