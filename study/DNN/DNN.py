@@ -7,6 +7,7 @@ from keras.src.layers import Dense, Dropout
 from keras.src.models import Sequential
 from keras.src.optimizers import Adam
 from keras.src.regularizers import L2
+
 from sklearn.metrics import accuracy_score
 
 random.seed(100)
@@ -95,27 +96,27 @@ test_eval = model.evaluate(test[cols], test['direction'])
 
 res = pd.DataFrame(history.history)
 
-# 시각화
-print(f'Train Evaluate - Loss: {train_eval[0]:.4f}, Accuracy: {train_eval[1]:.4f}')
-print(f' Test Evaluate - Loss: {test_eval[0]:.4f}, Accuracy: {test_eval[1]:.4f}')
+# # 시각화
+# print(f'Train Evaluate - Loss: {train_eval[0]:.4f}, Accuracy: {train_eval[1]:.4f}')
+# print(f' Test Evaluate - Loss: {test_eval[0]:.4f}, Accuracy: {test_eval[1]:.4f}')
 
-fig, axs = plt.subplots(1, 2, figsize=(18, 6))
+# fig, axs = plt.subplots(1, 2, figsize=(18, 6))
 
-# 학습 및 검증 정확도 시각화
-axs[0].plot(res['accuracy'], label='Train Accuracy')
-axs[0].plot(res['val_accuracy'], label='Validation Accuracy')
-axs[0].set_title('Model Accuracy')
-axs[0].set_xlabel('Epochs')
-axs[0].set_ylabel('Accuracy')
-axs[0].legend()
+# # 학습 및 검증 정확도 시각화
+# axs[0].plot(res['accuracy'], label='Train Accuracy')
+# axs[0].plot(res['val_accuracy'], label='Validation Accuracy')
+# axs[0].set_title('Model Accuracy')
+# axs[0].set_xlabel('Epochs')
+# axs[0].set_ylabel('Accuracy')
+# axs[0].legend()
 
-# 학습 및 검증 손실 시각화
-axs[1].plot(res['loss'], label='Train Loss')
-axs[1].plot(res['val_loss'], label='Validation Loss')
-axs[1].set_title('Model Loss')
-axs[1].set_xlabel('Epochs')
-axs[1].set_ylabel('Loss')
-axs[1].legend()
+# # 학습 및 검증 손실 시각화
+# axs[1].plot(res['loss'], label='Train Loss')
+# axs[1].plot(res['val_loss'], label='Validation Loss')
+# axs[1].set_title('Model Loss')
+# axs[1].set_xlabel('Epochs')
+# axs[1].set_ylabel('Loss')
+# axs[1].legend()
 
-plt.tight_layout()
-plt.show()
+# plt.tight_layout()
+# plt.show()
