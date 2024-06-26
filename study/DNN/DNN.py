@@ -72,6 +72,11 @@ split = int(len(data) * 0.8)
 train = data.iloc[:split].copy()
 test = data.iloc[split:].copy()
 
+# 가우스 정규화 진행
+mu, std = train[cols].mean(), train[cols].std()
+train[cols] = (train[cols] - mu) / std
+test[cols] = (test[cols] - mu) / std
+
 # 모델 학습
 model = create_model()
 history = model.fit(train[cols], train['direction'], epochs=50, verbose=1, validation_split=0.2, shuffle=False, class_weight=class_weight)
