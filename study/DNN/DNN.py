@@ -6,6 +6,7 @@ import tensorflow as tf
 from keras.src.layers import Dense, Dropout
 from keras.src.models import Sequential
 from keras.src.optimizers import Adam
+from keras.src.regularizers import L2
 from sklearn.metrics import accuracy_score
 
 random.seed(100)
@@ -57,14 +58,16 @@ class_weight = get_weight(data)
 
 # 모델 생성
 optimizer = Adam(learning_rate=0.001)
-def create_model(hidden_layer=2, units=128, dropout=True, rate=0.3, optimizer=optimizer):
+def create_model(hidden_layer=2, units=128, dropout=True, rate=0.3, regularize=True, reg=L2(0.001), optimizer=optimizer, input_dim=len(cols)):
+  if not regularize:
+    reg = None
   model = Sequential()
-  model.add(Dense(units, input_dim=len(cols), activation='relu'))
+  model.add(Dense(units, input_dim=input_dim, activity_regularizer=reg, activation='relu'))
 
   if dropout:
     model.add(Dropout(rate, seed=100))
   for _ in range(hidden_layer):
-    model.add(Dense(units, activation='relu'))
+    model.add(Dense(units, activation='relu', activity_regularizer=reg))
     if dropout:
       model.add(Dropout(rate, seed=100))
   model.add(Dense(1, activation='sigmoid'))
